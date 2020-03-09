@@ -58,7 +58,7 @@ namespace CSProject
                 + "\nhourlyRate = " + hourlyRate
                 + "\nhWorked = " + hWorked 
                 + "\nBasicPay = " + BasicPay 
-                + "\nTotalPay = " + BasicPay;
+                + "\nTotalPay = " + TotalPay;
         }
     }
 }
