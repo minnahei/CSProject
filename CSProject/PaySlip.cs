@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static System.Console;
+
 
 namespace CSProject
 {
     class PaySlip
     {
         //Fields
-        private int month, year;
+        private int month;
+        private int year;
 
         //Enum (private by default inside a class)
         enum MonthsOfYear { JAN = 1, FEB = 2, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC }
@@ -26,13 +27,13 @@ namespace CSProject
         {
             string path;
 
-            WriteLine("Generating pay slips...");
+            
 
             foreach (Staff f in myStaff)
             {
                 path = f.NameOfStaff + ".txt";
 
-                using (StreamWriter sw = new StreamWriter(path, true))
+                using (StreamWriter sw = new StreamWriter(path))
                 {
                     //Print the element # "month" from the MonthsOfYear enum
                     sw.WriteLine("PAY SLIP FOR {0} {1}", (MonthsOfYear)month, year);
@@ -67,7 +68,7 @@ namespace CSProject
         {
             string path = "summary.txt";
 
-            WriteLine("Generating summary...");
+           
 
             //Retrieve a list of staff with less than 10 hours.
             var result =
@@ -76,7 +77,7 @@ namespace CSProject
                 orderby st.NameOfStaff
                 select new { st.NameOfStaff, st.HoursWorked };
 
-            using (StreamWriter sw = new StreamWriter(path, true))
+            using (StreamWriter sw = new StreamWriter(path))
             {
                 sw.WriteLine("Staff with less than 10 working hours for {0} {1}", (MonthsOfYear)month, year);
                 sw.WriteLine("");
@@ -93,7 +94,7 @@ namespace CSProject
 
         public override string ToString()
         {
-            return "\nMonth = " + (MonthsOfYear)month
+            return "\nMonth = " + month
                 + "\nYear = " + year;
         }
     }
